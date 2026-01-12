@@ -1,0 +1,104 @@
+GEAR-BASED PROGRESS BAR - REQUIREMENTS
+
+=== FUNCTIONAL REQUIREMENTS ===
+
+FR-1: Gear Specification
+- Gears are defined by tooth count (number of teeth)
+- Minimum teeth: 3
+- Maximum teeth: defined by a configurable constant (MAX_GEAR_TEETH)
+- Gear size follows standard involute gear mathematics
+
+FR-2: Gear Generation & Placement
+- First gear is placed at a random position within the rectangle
+- Subsequent gears are placed sequentially to fill the remaining space
+- A new gear must mesh with at least one existing gear (no floating gears)
+- All gears placed together must form a single connected mesh system (no island groups)
+- Placement stops when no additional gears can fit within the rectangle
+
+FR-3: Gear Meshing
+- Gears mesh using standard involute gear mathematics
+- Meshing is validated by proximity (teeth can touch but must not overlap)
+- Gears that mesh drive each other's rotation based on tooth count ratios
+- Gears in opposite directions may counter-rotate to avoid overlaps
+
+FR-4: Gear Placement Algorithm
+- Define selection metrics for the next gear to place (tooth count, size, etc.)
+- Calculate valid arc positions where a new gear could validly mesh
+- Select a random point along the valid arc(s) for placement
+- Attempt placement; if unsuccessful, try alternative metrics or gear sizes
+
+FR-5: Gear Rotation & Synchronization
+- All gears rotate in sync based on standard gear ratio mathematics
+- The first placed gear drives the system at a specified rotation speed
+- Rotation speed of each gear is calculated from gear ratios relative to the first gear
+- Rotation is driven by a progress value (0-100%)
+
+FR-6: Rectangle Boundary Constraints
+- All gears must remain fully within the specified rectangle
+- No gear may extend beyond rectangle boundaries
+- Rectangle dimensions are provided as input parameters
+
+FR-7: Gear Parameters
+- Tooth depth: controls the height of teeth (standard involute parameter)
+- Tooth width: controls the width of teeth
+- Hole radius: radius of the central hole in each gear
+- Tooth roundness: controls the rounding of tooth profiles
+- All parameters follow standard gear mathematics
+
+=== UI REQUIREMENTS ===
+
+UI-1: Gear Visualization Area
+- Display area shows the rectangle containing meshed gears
+- Gears render with appropriate visual styling based on parameters
+- Background shows gears that have not yet filled (visual indication of space)
+
+UI-2: Progress Control
+- Slider input from 0 to 100
+- Controls rotation of the entire gear system
+- Progress value is displayed or clearly indicated
+
+UI-3: Gear Appearance Control
+- Color picker button ("Change Color") to set gear color
+- Tooth shape selector: "Square" and "Sharp" options
+
+UI-4: Radius Range Control
+- Minimum radius slider: sets the smallest gear size to generate
+- Maximum radius slider: sets the largest gear size to generate
+- Both sliders control which tooth counts are considered valid
+
+UI-5: Tooth Parameter Controls
+- Tooth depth slider: adjusts tooth height
+- Tooth width slider: adjusts tooth width
+- Tooth roundness slider: controls tooth profile rounding
+
+UI-6: Gear Center Control
+- Hole radius slider: controls the radius of gear center hole
+
+=== CONSTRAINTS ===
+
+C-1: Connectivity
+- All gears must be part of a single connected mesh (no floating or island groups)
+- Every gear must mesh with at least one other gear
+
+C-2: Bounds
+- Every gear must remain fully within the rectangle boundaries
+- No gear may partially or fully extend beyond the rectangle
+
+C-3: Tooth Count Range
+- Valid tooth count: 3 to MAX_GEAR_TEETH (inclusive)
+- Gear size is derived from tooth count
+
+C-4: Meshing Validation
+- Teeth of meshing gears must touch without overlapping
+- Overlapping teeth constitute invalid placement
+
+=== NON-FUNCTIONAL REQUIREMENTS ===
+
+NF-1: Implementation Flexibility
+- Technology stack is open-ended (Canvas, SVG, WebGL, etc.)
+- Algorithm details are flexible as long as acceptance criteria are met
+- Placement strategy details are implementation-specific
+
+NF-2: Performance
+- System should responsively update when parameters are adjusted
+- Rotation animation should be smooth during progress changes
