@@ -14,7 +14,6 @@ FR-2: Gear Generation & Placement
 - A new gear must mesh with at least one existing gear (no floating gears)
 - All gears placed together must form a single connected mesh system (no island groups)
 - Placement stops when no additional gears can fit within the rectangle
-- ----
 
 FR-3: Gear Meshing
 - Gears mesh using standard involute gear mathematics
