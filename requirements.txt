@@ -14,6 +14,7 @@ FR-2: Gear Generation & Placement
 - A new gear must mesh with at least one existing gear (no floating gears)
 - All gears placed together must form a single connected mesh system (no island groups)
 - Placement stops when no additional gears can fit within the rectangle
+- ----
 
 FR-3: Gear Meshing
 - Gears mesh using standard involute gear mathematics
@@ -50,7 +51,7 @@ FR-7: Gear Parameters
 UI-1: Gear Visualization Area
 - Display area shows the rectangle containing meshed gears
 - Gears render with appropriate visual styling based on parameters
-- Background shows gears that have not yet filled (visual indication of space)
+- Background is a solid color that contrasts enough with the rectangle and gears
 
 UI-2: Progress Control
 - Slider input from 0 to 100
@@ -61,9 +62,9 @@ UI-3: Gear Appearance Control
 - Color picker button ("Change Color") to set gear color
 - Tooth shape selector: "Square" and "Sharp" options
 
-UI-4: Radius Range Control
-- Minimum radius slider: sets the smallest gear size to generate
-- Maximum radius slider: sets the largest gear size to generate
+UI-4: Teeth Count Range Control
+- Minimum teeth slider: sets the smallest number of teeth for a generated gear
+- Maximum teeth slider: sets the largest number of teeth for a generated gear
 - Both sliders control which tooth counts are considered valid
 
 UI-5: Tooth Parameter Controls
@@ -102,3 +103,8 @@ NF-1: Implementation Flexibility
 NF-2: Performance
 - System should responsively update when parameters are adjusted
 - Rotation animation should be smooth during progress changes
+- Identify cases where no more gears can be added and stop generation to avoid hanging
+
+NF-3: Code Quality
+- Code should be clean - well structured, formatted and readable for a human
+- No comments - prefer readable names for variables, functions and classes
