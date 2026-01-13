@@ -24,7 +24,7 @@
 - [ ] Every gear placed after the first must mesh with at least one existing gear
 - [ ] No gear exists that does not mesh with any other gear
 - [ ] Attempting to place a gear that would not mesh with any existing gear fails and is rejected
-- [ ] At least 2 gears are placed (or test with single gear scenario)
+- [ ] At least 1 gear is placed (or test when no gear can fit in the rectangle)
 
 ## AC-4: Single Mesh System (No Islands)
 **Requirement:** FR-2, C-1
@@ -77,28 +77,18 @@
 - [ ] The rotation system is internally consistent (no contradictions in gear speeds)
 - [ ] Adjacent meshing gears rotate in the correct direction relative to each other
 
-## AC-10: Progress Bar Control
-**Requirement:** FR-5, UI-2
+## AC-10: Teeth Count Controls
+**Requirement:** FR-1, UI-3
 
 **Acceptance Criteria:**
-- [ ] Progress slider accepts values from 0 to 100
-- [ ] Moving the slider updates gear rotation immediately
-- [ ] Progress value 0 shows gears at initial rotation
-- [ ] Progress value 100 shows maximum rotation (full or partial rotation is acceptable)
-- [ ] Intermediate progress values produce proportional rotation
-
-## AC-11: Radius Range Controls
-**Requirement:** FR-2, UI-4
-
-**Acceptance Criteria:**
-- [ ] Minimum radius slider limits the smallest gear that can be generated
-- [ ] Maximum radius slider limits the largest gear that can be generated
-- [ ] Only gears with radius between min and max are considered for placement
+- [ ] Minimum tooth count slider limits the smallest gear that can be generated
+- [ ] Maximum tooth count slider limits the largest gear that can be generated
+- [ ] Only gears with a teeth count between min and max are considered for placement
 - [ ] Adjusting sliders allows re-generation of gear configurations with different size ranges
-- [ ] Min radius slider value is less than or equal to max radius slider value
+- [ ] Min tooth count slider value is less than or equal to max tooth count slider value
 
-## AC-12: Tooth Parameter Controls
-**Requirement:** FR-7, UI-5, UI-6
+## AC-11: Tooth Parameter Controls
+**Requirement:** FR-7, UI-4, UI-5
 
 **Acceptance Criteria:**
 - [ ] Tooth depth parameter can be adjusted and affects gear tooth visual height
@@ -106,10 +96,10 @@
 - [ ] Tooth roundness parameter can be adjusted and affects tooth profile curvature
 - [ ] Hole radius parameter can be adjusted and affects gear center hole size
 - [ ] All parameters follow standard involute gear mathematics conventions
-- [ ] Changing parameters allows re-generation of gears with new characteristics
+- [ ] Changing parameters triggers re-generation of gears with new characteristics
 
-## AC-13: Tooth Shape Selection
-**Requirement:** UI-3
+## AC-12: Tooth Shape Selection
+**Requirement:** UI-2
 
 **Acceptance Criteria:**
 - [ ] Two tooth shape options are available: "Square" and "Sharp"
@@ -117,8 +107,8 @@
 - [ ] Changing tooth shape visually updates gear appearance
 - [ ] Tooth shape affects gear rendering but not meshing math
 
-## AC-14: Color Control
-**Requirement:** UI-3
+## AC-13: Color Control
+**Requirement:** UI-2
 
 **Acceptance Criteria:**
 - [ ] A color picker (button: "Change Color") allows selection of gear color
@@ -126,26 +116,24 @@
 - [ ] Color change is immediately visible
 - [ ] Color persists across parameter changes and rotation
 
-## AC-15: Full UI Integration
-**Requirement:** UI-1, UI-2, UI-3, UI-4, UI-5, UI-6
+## AC-14: Full UI Integration
+**Requirement:** UI-1, UI-2, UI-3, UI-4, UI-5
 
 **Acceptance Criteria:**
 - [ ] All UI controls are functional and responsive
 - [ ] Gear visualization updates when any parameter changes
-- [ ] Progress slider and gear rotation are synchronized
 - [ ] UI layout matches the provided design mockup
 - [ ] All sliders and controls are accessible and usable
 
-## AC-16: Edge Cases
+## AC-15: Edge Cases
 **Requirement:** FR-2, C-1, C-3
 
 **Acceptance Criteria:**
 - [ ] System handles single gear scenario (first gear with no additional gears that can mesh)
 - [ ] System handles tooth count boundaries (3-tooth and MAX_TOOTH gears)
 - [ ] System handles full rectangle scenario (no room for additional gears)
-- [ ] System handles minimum radius scenario (no valid gears between min and max)
 
-## AC-17: Placement Algorithm
+## AC-16: Placement Algorithm
 **Requirement:** FR-4
 
 **Acceptance Criteria:**
@@ -155,7 +143,7 @@
 - [ ] Algorithm adapts gear selection metrics when placement fails with one approach
 - [ ] Algorithm terminates when no more gears can be placed
 
-## AC-18: Visual Representation
+## AC-17: Visual Representation
 **Requirement:** FR-1, UI-1
 
 **Acceptance Criteria:**
