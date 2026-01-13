@@ -31,7 +31,7 @@ FR-5: Gear Rotation & Synchronization
 - All gears rotate in sync based on standard gear ratio mathematics
 - The first placed gear drives the system at a specified rotation speed
 - Rotation speed of each gear is calculated from gear ratios relative to the first gear
-- Rotation is driven by a progress value (0-100%)
+- Rotation is driven by time. The first gear rotates at roughly one full circle every 3 seconds
 
 FR-6: Rectangle Boundary Constraints
 - All gears must remain fully within the specified rectangle
@@ -50,29 +50,25 @@ FR-7: Gear Parameters
 UI-1: Gear Visualization Area
 - Display area shows the rectangle containing meshed gears
 - Gears render with appropriate visual styling based on parameters
-- Background shows gears that have not yet filled (visual indication of space)
+- Background is a solid color that contrasts enough with the rectangle and gears
 
-UI-2: Progress Control
-- Slider input from 0 to 100
-- Controls rotation of the entire gear system
-- Progress value is displayed or clearly indicated
-
-UI-3: Gear Appearance Control
+UI-2: Gear Appearance Control
 - Color picker button ("Change Color") to set gear color
 - Tooth shape selector: "Square" and "Sharp" options
 
-UI-4: Radius Range Control
-- Minimum radius slider: sets the smallest gear size to generate
-- Maximum radius slider: sets the largest gear size to generate
+UI-3: Teeth Count Range Control
+- Minimum teeth slider: sets the smallest number of teeth for a generated gear
+- Maximum teeth slider: sets the largest number of teeth for a generated gear
 - Both sliders control which tooth counts are considered valid
 
-UI-5: Tooth Parameter Controls
+UI-4: Tooth Parameter Controls
 - Tooth depth slider: adjusts tooth height
 - Tooth width slider: adjusts tooth width
 - Tooth roundness slider: controls tooth profile rounding
 
-UI-6: Gear Center Control
+UI-5: Gear Center Control
 - Hole radius slider: controls the radius of gear center hole
+- Hole can be no larger than 95% of the smallest possible gear's inner radius
 
 === CONSTRAINTS ===
 
@@ -102,3 +98,10 @@ NF-1: Implementation Flexibility
 NF-2: Performance
 - System should responsively update when parameters are adjusted
 - Rotation animation should be smooth during progress changes
+- Identify cases where no more gears can be added and stop generation to avoid hanging
+
+NF-3: Code Quality
+- Code should be clean - well structured, formatted and readable for a human
+- No comments - prefer readable names for variables, functions and classes
+- Write for testability - follow the SOLID and DRY principles
+- Unit tests are written at least for the core calculations
