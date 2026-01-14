@@ -7,9 +7,11 @@ FR-1: Gear Specification
 - Minimum teeth: 3
 - Maximum teeth: defined by a configurable constant (MAX_GEAR_TEETH)
 - Gear size follows standard involute gear mathematics
+- Every gear is created with a random number of teeth in the range of 3 to MAX_GEAR_TEETH
 
 FR-2: Gear Generation & Placement
 - First gear is placed at a random position within the rectangle
+- If no gear can fit in the rectangle, abort
 - Subsequent gears are placed sequentially to fill the remaining space
 - A new gear must mesh with at least one existing gear (no floating gears)
 - All gears placed together must form a single connected mesh system (no island groups)
